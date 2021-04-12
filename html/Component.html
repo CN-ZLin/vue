@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--使用组件-->
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+</div>
+
+<div id="app2">
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+    Vue.component("my-component",{
+        template:"<div>组件化开发</div>"
+    });
+
+    var app = new Vue({
+        el:"#app",
+        data:{}
+    });
+</script>
+<script>
+    //注册
+    var child = {
+        template:"<div>局部组件化开发</div>"
+    };
+    var vm = new Vue({
+        el: "#app2",
+        components:{
+            //<my-component> 将只在父模板可用
+            "my-component":child
+        }
+    })
+</script>

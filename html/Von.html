@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<a v-on:click="1">1</a>
+<a @click="2">2</a><br>
+
+<div id="app">
+    <input type="button" v-on:click="a" value="点击">
+</div>
+
+<div id="app2" v-on:click="b('B')" style="width: 10px;height: 20px;border: 1px solid red;">
+    {{info}}
+</div>
+
+<div id="app3">
+    <input type="text" v-on:keydown="c()">
+</div>
+
+<div id="app4">
+    <input type="text" v-on:keydown="d($event)">
+</div>
+
+<div id="app5">
+    <div v-on:mouseover.once="e" id="div" style="background:red;">
+        <textarea v-on:mouserover="e2($event)">文本域</textarea>
+    </div>
+</div>
+
+<div id="app6">
+    <form  @submit.prevent action="https://www.baidu.com">
+        <input type="submit" value="跳转">
+    </form>
+    <hr>
+    <div @click="f">
+        <a @click.stop href="https://www.jd.com">京东</a>
+    </div>
+</div>
+
+<div id="app7">
+    <button v-on:click="num++">增加</button>
+    <button @click="decrement">减少</button>
+
+    <h2>num={{num}}</h2>
+
+    <hr>
+
+    <div style="background-color:lightblue;width: 100px ;height: 100px;" @click="g('点击div')">
+        <button @click.stop="g('点击button')">按钮</button>
+    </div>
+
+    <a href="https://www.baidu.com" @click.prevent="g('点击超链接')">链接</a>
+</div>
+
+<a v-on:click.stop="stop"></a>
+
+<form v-on:submit.prevent="submit.prevent"></form>
+
+<a v-on:click.stop.prevent="stop.prevent"></a>
+
+<form v-on:submit.prevent></form>
+
+<div v-on:click.captrue="captrue"></div>
+
+<div v-on:click.self="self"></div>
+
+<div id="app8">
+    <input type="text" v-on:keyup.enter="h()">
+</div>
+</body>
+</html>
+<script>
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+            a: function () {
+                alert("lin!")
+            }
+        }
+    });
+
+    new Vue({
+        el: "#app2",
+        data: {
+            info: "b"
+        },
+        methods: {
+            b: function (msg) {
+                this.info = msg;
+            }
+        }
+    });
+
+    new Vue({
+        el: "#app3",
+        data: {},
+        methods: {
+            c: function (c) {
+                alert("键盘键")
+            }
+        }
+    });
+
+    new Vue({
+        el: "#app4",
+        data: {},
+        methods: {
+            d: function (e) {
+                if (!(e.keyCode >= 48 && e.keyCode <= 57)) {
+                    e.preventDefault();
+                }
+            }
+        }
+    });
+
+    new Vue({
+        el:"#app5",
+        data:{},
+        methods:{
+            e:function () {
+                alert("div");
+            },
+            e2:function (event) {
+                alert("textarea");
+                event.stopPropagation();
+            }
+        }
+    });
+
+    new Vue({
+        el:"#app6",
+        data:{
+
+        },
+        methods:{
+            f:function () {
+                alert("div");
+            }
+        }
+    });
+
+   new Vue({
+        el:"#app7",
+        data:{
+            num:1
+        },
+        methods:{
+            decrement:function(){
+                this.num--;
+            },
+            g:function(str){
+                console.log(str);
+            }
+        }
+    });
+   
+   new Vue({
+       el:"#app8",
+       methods:{
+           h:function () {
+               location.href="https://www.baidu.com";
+           }
+       }
+   });
+</script>

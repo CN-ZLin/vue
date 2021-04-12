@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{number+1}}
+    <hr>
+    {{flag?"hello":"world"}}
+    <hr>
+    {{info}}
+</div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            info:"Vue_HelloWorld",
+            number:1,
+            flag:true
+        },
+        methods:{
+
+        }
+    });
+</script>

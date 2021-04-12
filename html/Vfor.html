@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in list">{{item+"--"+index}}</li>
+    </ul>
+
+    <br><br>
+    <ur>
+        <li v-for="(val,key) in user">{{key+"--"+val}}</li>
+    </ur>
+</div>
+
+<br><br>
+<table border="1" align="center" id="app2" width="300">
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>地址</th>
+    </tr>
+    <tr v-for="user in userList">
+        <td v-for="(val,key) in user">{{val}}</td>
+    </tr>
+</table>
+</body>
+</html>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            list: ["a", "b", "c", "d"],
+            user: {
+                username: "aa",
+                password: "aa",
+                address: "aa"
+            }
+        },
+        methods: {}
+    });
+
+    new Vue({
+        el:"#app2",
+        data:{
+            userList:[
+                {
+                    username:"a",
+                    age:1,
+                    address:"a1"
+                },
+                {
+                    username:"b",
+                    age:2,
+                    address:"b2"
+                },
+                {
+                    username:"c",
+                    age:3,
+                    address:"c3"
+                }
+            ]
+        },
+        methods:{
+
+        }
+    });
+</script>
